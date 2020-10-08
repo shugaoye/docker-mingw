@@ -24,14 +24,22 @@ export CCACHE_DIR=/tmp/ccache
 export USE_CCACHE=1
 
 msg="docker_entrypoint: Creating user UID/GID [$USER_ID/$GROUP_ID]" && echo $msg
+mkdir -p /home/$USERNAME
+chown 1001:1001 /home/$USERNAME
 groupadd -g $GROUP_ID -r $USERNAME && \
 useradd -u $USER_ID --create-home -r -g sudo $GROUPNAME -s /bin/bash && \
 echo "$msg - done"
+
+# Enable sudo
+echo "aosp ALL=(ALL) NOPASSWD:ALL" | tee -a /etc/sudoers
 
 # msg="docker_entrypoint: Creating /tmp/ccache and /$USERNAME directory" && echo $msg
 # mkdir -p /tmp/ccache /$USERNAME
 # chown $USERNAME:$GROUPNAME /tmp/ccache /$USERNAME
 # echo "$msg - done"
+
+cp /root/bashrc /home/$USERNAME/.bashrc
+chown $USERNAME:$GROUPNAME /home/$USERNAME/.bashrc
 
 # Default to 'bash' if no arguments are provided
 args="$@"

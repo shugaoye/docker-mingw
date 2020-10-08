@@ -21,4 +21,5 @@ RUN apt-get install -y net-tools sudo
 # WORKDIR /mono
 
 COPY utils/docker_entrypoint.sh /root/docker_entrypoint.sh
+COPY utils/bashrc /root/bashrc
 ENTRYPOINT ["/root/docker_entrypoint.sh"]
