@@ -4,8 +4,14 @@ USER_ID=`id -u`
 USERNAME=`id -un`
 GROUP_ID=`id -g`
 GROUPNAME=`id -gn`
-IMAGE=shugaoye/mingw:latest
+
+# Using mingw:latest if there is no command line argument
 #IMAGE=dockcross/windows-x64:latest
+if [ -n "$1" ]; then
+        IMAGE=$1
+else
+        IMAGE=shugaoye/mingw:bionic
+fi
 
 docker run -ti --rm -e DISPLAY=$DISPLAY \
   -v /tmp/.X11-unix:/tmp/.X11-unix \
