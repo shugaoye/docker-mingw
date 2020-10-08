@@ -118,5 +118,5 @@ fi
 
 export USE_CCACHE=1
 
-export PATH=$PATH:/usr/src/mxe/usr/bin
+export PATH=/usr/lib/mxe/usr/bin:$PATH
 

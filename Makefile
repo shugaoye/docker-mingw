@@ -1,5 +1,5 @@
 DOCKER = docker
-IMAGE = shugaoye/mingw:bionic
+IMAGE = shugaoye/mingw:bionic-dev
 VOL1 ?= $(HOME)/vol1
 VOL2 ?= $(HOME)/.ccache
 

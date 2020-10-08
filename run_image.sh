@@ -10,7 +10,7 @@ GROUPNAME=`id -gn`
 if [ -n "$1" ]; then
         IMAGE=$1
 else
-        IMAGE=shugaoye/mingw:bionic
+        IMAGE=shugaoye/mingw:bionic-dev
 fi
 
 docker run -ti --rm -e DISPLAY=$DISPLAY \
