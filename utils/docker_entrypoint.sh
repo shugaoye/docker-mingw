@@ -31,7 +31,7 @@ useradd -u $USER_ID --create-home -r -g sudo $GROUPNAME -s /bin/bash && \
 echo "$msg - done"
 
 # Enable sudo
-echo "aosp ALL=(ALL) NOPASSWD:ALL" | tee -a /etc/sudoers
+echo "$USERNAME ALL=(ALL) NOPASSWD:ALL" | tee -a /etc/sudoers
 
 # msg="docker_entrypoint: Creating /tmp/ccache and /$USERNAME directory" && echo $msg
 # mkdir -p /tmp/ccache /$USERNAME
