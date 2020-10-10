@@ -1,7 +1,9 @@
 FROM shugaoye/mingw:bionic
-MAINTAINER Roger Ye <shugaoye@yahoo.com>
 
-RUN apt-get install -y mxe-i686-w64-mingw32.static-qtbase \
+LABEL maintainer="shugaoye@yahoo.com"
+
+RUN apt-get install -y python3 \
+mxe-i686-w64-mingw32.static-qtbase \
 mxe-i686-w64-mingw32.static-qttools \
 mxe-i686-w64-mingw32.static-qtsvg \
 mxe-i686-w64-mingw32.static-libgcrypt \
@@ -22,4 +24,5 @@ mxe-i686-w64-mingw32.static-libgpg-error
 
 COPY utils/docker_entrypoint.sh /root/docker_entrypoint.sh
 COPY utils/bashrc /root/bashrc
+COPY utils/windeployqt /usr/local/bin/windeployqt
 ENTRYPOINT ["/root/docker_entrypoint.sh"]

@@ -38,6 +38,17 @@ echo "$USERNAME ALL=(ALL) NOPASSWD:ALL" | tee -a /etc/sudoers
 # chown $USERNAME:$GROUPNAME /tmp/ccache /$USERNAME
 # echo "$msg - done"
 
+# Fix issues in prebuild MXE binaries
+rm /usr/lib/mxe/usr/x86_64-pc-linux-gnu/bin/i686-w64-mingw32.static-gcc
+rm /usr/lib/mxe/usr/x86_64-pc-linux-gnu/bin/gcc
+ln -s /usr/lib/mxe/usr/bin/i686-w64-mingw32.static-gcc /usr/lib/mxe/usr/x86_64-pc-linux-gnu/bin/i686-w64-mingw32.static-gcc
+ln -s /usr/lib/mxe/usr/bin/i686-w64-mingw32.static-gcc /usr/lib/mxe/usr/x86_64-pc-linux-gnu/bin/gcc
+
+rm /usr/lib/mxe/usr/x86_64-pc-linux-gnu/bin/i686-w64-mingw32.static-g++
+rm /usr/lib/mxe/usr/x86_64-pc-linux-gnu/bin/g++
+ln -s /usr/lib/mxe/usr/bin/i686-w64-mingw32.static-g++ /usr/lib/mxe/usr/x86_64-pc-linux-gnu/bin/i686-w64-mingw32.static-g++
+ln -s /usr/lib/mxe/usr/bin/i686-w64-mingw32.static-g++ /usr/lib/mxe/usr/x86_64-pc-linux-gnu/bin/g++
+
 cp /root/bashrc /home/$USERNAME/.bashrc
 chown $USERNAME:$GROUPNAME /home/$USERNAME/.bashrc
 
